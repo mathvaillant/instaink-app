@@ -1,0 +1,68 @@
+.img__upload {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  background-color: #000;
+  width: 100%;
+  z-index: 1;
+  progress {
+    color:red;
+    display: block;
+    width: auto;
+    margin: 0rem 1rem;
+  }
+  .img__upload__input {
+    display: flex;
+    margin: 0rem 1rem;
+    .img__upload__icons {
+      width: 100%;
+      margin: auto;
+    }
+
+    .img__upload__pageTop {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    // THIS CONTENT IS GOING TO BE HIDDEN IN THE UI
+    .img__upload__file {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+      flex: 1;
+    }
+     // THIS CONTENT IS GOING TO BE HIDDEN IN THE UI
+
+    .img__upload__file__label {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+    
+    .img__upload__caption {
+      background-color: rgba(255, 255, 255, 0.781);
+      border: none;
+      border-radius: 20px;
+      text-align: center;
+      color: #000;
+      margin: 0.35rem;
+      flex: 6;
+      display: flex;
+      align-items: center;
+      &:focus {
+        outline: none;
+      }
+    }
+    .img__upload__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+  }
+}
