@@ -36,16 +36,16 @@ const useStyles = makeStyles((theme) => ({
     outline: 'none',
   }
 }));
- 
+
 function App() {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [posts, setPosts] = useState([]);
-  const [open, setOpen]  = useState(false);
+  const [open, setOpen] = useState(false);
   const [openSignIn, setOpenSignIn] = useState('');
-  const [username, setUsername]  = useState('');
-  const [password, setPassword]  = useState('');
-  const [email, setEmail]  = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -80,47 +80,48 @@ function App() {
     event.preventDefault();
 
     auth
-    .createUserWithEmailAndPassword(email, password)
-    .then((authUser) => {
-      return authUser.user.updateProfile({
-        displayName: username,
-      });
-    })
-    .catch((error) => alert(error.message))
+      .createUserWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        return authUser.user.updateProfile({
+          displayName: username,
+        });
+      })
+      .catch((error) => alert(error.message))
+    setOpen(false);
   }
 
   const signIn = (event) => {
     event.preventDefault();
 
     auth
-    .signInWithEmailAndPassword(email, password)
-    .catch((err) => alert(err.message))
+      .signInWithEmailAndPassword(email, password)
+      .catch((err) => alert(err.message))
 
     setOpenSignIn(false);
   }
 
   return (
     <div className="App">
-    
-      { user?.displayName ? 
+
+      { user?.displayName ?
         (
-          <ImageUpload  username={user.displayName}/>
+          <ImageUpload username={user.displayName} />
         )
-          :
+        :
         (
           <h3 className='app__message__not__logged'>You need to login to upload and comment</h3>
         )
       }
 
 
-    <Modal
+      <Modal
         open={open}
         onClose={() => setOpen(false)}
       >
         <div style={modalStyle} className={classes.paper}>
           <form className='app__signup'>
             <center>
-              <img 
+              <img
                 className='app__headerImage'
                 src={InstainkLogo}
                 alt="logo.png"
@@ -159,7 +160,7 @@ function App() {
         <div style={modalStyle} className={classes.paper}>
           <form className='app__signup'>
             <center>
-              <img 
+              <img
                 className='app__headerImage'
                 src={InstainkLogo}
                 alt="logo.png"
@@ -186,31 +187,31 @@ function App() {
 
       <div className="app__header">
         <div className="app__headerImage">
-          <img 
+          <img
             src={InstainkLogo}
             alt="logo.png"
           />
         </div>
         <div className="app__header__log">
-          { user ? 
-              (
-                <Button onClick={() => auth.signOut()}>Log Out</Button>
-              )
-                :
-              (
-                <div className="app__loginContainer">
-                  <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-                  <Button onClick={() => setOpen(true)}>Sign Up</Button>
-                </div>
-              )
-            }
+          {user ?
+            (
+              <Button onClick={() => auth.signOut()}>Log Out</Button>
+            )
+            :
+            (
+              <div className="app__loginContainer">
+                <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
+                <Button onClick={() => setOpen(true)}>Sign Up</Button>
+              </div>
+            )
+          }
         </div>
       </div>
 
       <div className="app__posts">
         {
-          posts.map(({post, id}) => (
-            <Post username={post.username} caption={post.caption} imgUrl={post.imgUrl} key={id} postId={id} user={user}/>   
+          posts.map(({ post, id }) => (
+            <Post username={post.username} caption={post.caption} imgUrl={post.imgUrl} key={id} postId={id} user={user} />
           ))
         }
       </div>

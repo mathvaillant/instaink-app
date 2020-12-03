@@ -1,6 +1,6 @@
 .post {
-  background-color: #000;
-  max-width: 800px;
+  background-color: #fff;
+  max-width: 700px;
   margin-bottom: 2rem;
   margin-left: auto;
   margin-right: auto;
@@ -35,24 +35,26 @@
   }
   .post__comment {
     display: flex;
-    flex-direction: column;
-    width: 100%;
+    flex-direction: row;
+    width: 99%;
     margin: auto;
     .post__comment__input {
+      flex: 11;
       padding: 0.3rem;
       margin: 0.5rem 0.9rem !important;
       margin: 0 1rem 0.2rem 1rem;
       border: none;
       outline: none;
-      background-color: #000;
+      background-color: #fff;
     }
     .post__comment__button {
-      background: rgb(52,30,30);
-      background: linear-gradient(352deg, rgba(52,30,30,0.927608543417367) 0%, rgba(255,0,0,1) 100%);
-      border-radius: 10px;
-      padding: 3px;
+      flex: 1;
+      background: rgb(54, 52, 52);
+      background: linear-gradient(352deg, rgba(97, 94, 94, 0.928) 0%, rgb(0, 0, 0) 100%);
+      border-radius: 3px;
+      // padding: 3px;
       color: #fff;
-      margin: 0 1rem;
+      // margin: 0 1rem;
       border: none;
       outline: none;
     }
